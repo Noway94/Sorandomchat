@@ -101,7 +101,7 @@ var Epsile = new function () {
 			logChat(2, message);
 			alertSound.currentTime = 0;
 			if (isBlurred) {
-				//alertSound.play();
+				alertSound.play();
 			}
 		});
 

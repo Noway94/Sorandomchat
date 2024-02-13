@@ -5,7 +5,6 @@ html, body {
 	height: 100%;
 	padding: 0px;
 	margin: 0px;
-	background-color: #111;
 	color: white;
 	font-size: 14px;
 	font-family: Helvetica, sans-serif;
@@ -23,10 +22,8 @@ a {
 }
 
 header {
-	background-color: #333;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#111));
-	background-image: -moz-linear-gradient(top, #333, #111);
-	background-image: linear-gradient(top, #333, #111);
+	background-color: #fff;
+	
 	border-bottom: 3px solid #101;
 	height: 60px;
 	width: 100%;
@@ -39,7 +36,7 @@ header {
 		position: relative;
 		top: -10px;
 		left: 0px;
-		background-image: url('../img/epsile_text.png');
+		background-image: url('../img/randomchatlogo.png');
 	}
 }
 
@@ -95,9 +92,9 @@ footer {
 	width: 100%;
 	height: 100%;
 	background-color: #000;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#000), to(#202));
-	background-image: -moz-linear-gradient(top, #000, #202);
+
 	background-image: linear-gradient(top, #000, #202);
+	
 	overflow: hidden;
 }
 #chatMain {
@@ -237,7 +234,7 @@ textarea:focus {
 }
 .consoleChat {
 	font-weight: bold;
-	color: #B9B;
+	color: #fff;
 }
 
 
@@ -257,9 +254,10 @@ textarea:focus {
 	height: 100%;
 	display: block;
 	background-color: #111;
+	/*
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#111), to(#202));
 	background-image: -moz-linear-gradient(top, #111, #202);
-	background-image: linear-gradient(top, #111, #202);
+	background-image: linear-gradient(top, #111, #202);*/
 }
 
 
@@ -291,6 +289,7 @@ textarea:focus {
 	}
 	#description {
 		color: rgba(255, 191, 255, 0.7);
+		color:#fff;
 		font-size: 15px;
 	}
 
