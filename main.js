@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-// epsile server
-// created by djazz
+
 'use strict';
 
 // config
-var port = 8001;
+const PORT = process.env.PORT || 8000;
 
 // load and initialize modules
 var express = require('express');
@@ -12,8 +11,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-server.listen(port, function () {
-	console.log('epsile server listening at port %d', port);
+server.listen(PORT, function () {
+	console.log('SoRandomChat server listening at port %d', PORT);
 });
 
 //app.use(express.compress());

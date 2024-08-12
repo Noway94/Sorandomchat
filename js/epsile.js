@@ -1,7 +1,6 @@
-// epsile
-// created by djazz
 
-var Epsile = new function () {
+
+var SoRandomChat = new function () {
 	'use strict';
 
 	var domID = function (id) {return document.getElementById(id);};
@@ -91,7 +90,7 @@ var Epsile = new function () {
 			setTyping(false);
 			disconnectType = true;
 			disconnectButton.disabled = false;
-			//logChat(-1, "<input type=button value='Start a new chat' onclick='Epsile.newStranger();'>");
+			//logChat(-1, "<input type=button value='Start a new chat' onclick='SoRandomChat.newStranger();'>");
 			disconnectButton.value = "New";
 			chatArea.disabled = true;
 			chatArea.focus();
@@ -118,7 +117,7 @@ var Epsile = new function () {
 
 		socket.on('disconnect', function () {
 			logChat(0, "Connection imploded");
-			logChat(-1, "<input type=button value='Reconnect' onclick='Epsile.startChat();'>");
+			logChat(-1, "<input type=button value='Reconnect' onclick='SoRandomChat.startChat();'>");
 			peopleOnlineSpan.innerHTML = "0";
 			chatArea.disabled = true;
 			disconnectButton.disabled = true;
@@ -127,7 +126,7 @@ var Epsile = new function () {
 		});
 		socket.on('error', function (e) {
 			logChat(0, "Connection error");
-			logChat(-1, "<input type=button value='Reconnect' onclick='Epsile.startChat();'>");
+			logChat(-1, "<input type=button value='Reconnect' onclick='SoRandomChat.startChat();'>");
 			peopleOnlineSpan.innerHTML = "0";
 			chatArea.disabled = true;
 			disconnectButton.disabled = true;
@@ -183,7 +182,7 @@ var Epsile = new function () {
 			if(firstNotify && notify > 0 && window.webkitNotifications.checkPermission() === 0) {
 				clearTimeout(notifyTimer);
 				if(lastNotify) lastNotify.cancel();
-				lastNotify = window.webkitNotifications.createNotification('img/epsile_logo32.png', 'Epsile'+(type===0?' Message':''), who2+message2);
+				lastNotify = window.webkitNotifications.createNotification('img/randomchatlogo.png', 'SoRandomChat'+(type===0?' Message':''), who2+message2);
 				lastNotify.show();
 				firstNotify = false;
 				notifyTimer = setTimeout(function () {
@@ -227,7 +226,7 @@ var Epsile = new function () {
 		if(disconnectType===true) {
 			disconnectType = false;
 			disconnectButton.value = "Disconnect";
-			Epsile.newStranger();
+			SoRandomChat.newStranger();
 		}
 		else if(socket) {
 			socket.emit("disconn");
@@ -295,33 +294,34 @@ var Epsile = new function () {
 			}
 		}
 	}, false);
+	
 	chatArea.addEventListener("keyup", function (e) {
-		if (socket) {
-			if (typingtimer!==null) {
-				clearTimeout(typingtimer);
-			}
-			
-			if (chatArea.value === "" && isTyping) {
-				socket.emit("typing", false); // Not typing
-				isTyping = false;
-			}
-			else {
-				if (!isTyping && chatArea.value.length > 0) {
-					socket.emit("typing", true);
-					isTyping = true;
-				}
-				
-				typingtimer = setTimeout(function () {
-					if(socket && isTyping) {
-						socket.emit("typing", false); // Not typing
-					}
-					isTyping = false;
-				}, 10*1000);
-			}
-		}
-	}, false);
-};
+        if (socket) {
+          if (typingtimer !== null) {
+            clearTimeout(typingtimer);
+          }
 
+          if (chatArea.value === "" && isTyping) {
+            socket.emit("typing", false); // Not typing
+            isTyping = false;
+          } else {
+            if (!isTyping && chatArea.value.length > 0) {
+              socket.emit("typing", true);
+              isTyping = true;
+            }
+
+            typingtimer = setTimeout(function () {
+              if (socket && isTyping) {
+                socket.emit("typing", false); // Not typing
+              }
+              isTyping = false;
+            }, 10 * 1000);
+          }
+        }
+      }, false);
+    
+  
+};
 
 
 

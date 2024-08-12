@@ -1,3 +1,6 @@
+
+/*
+
 var splitDomain=document.domain.split(".");
 if(splitDomain.length>1){
 	document.domain=splitDomain[splitDomain.length-2]+"."+splitDomain[splitDomain.length-1]
@@ -40,3 +43,5 @@ function setFavicon(a){
 	b.href=a;
 	$$("head")[0].grab(b)
 };
+
+*/
